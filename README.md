@@ -86,15 +86,6 @@ url: `/api/v1/product-collections/`
 Тесты валидируют различия в логике для админа, простого пользователя и пользователя без аутентификации.   
 В качестве Test Runner'а использован `pytest`.
 
-Пример запуска тестов с coverage:
-
-```bash
-pytest --cov=django_diplom_project tests/
-```
-
-![пример запуска тестов с coverage](./screenshots/pytests_with_coverage.png?raw=true)
-
-
 ## Что необходимо предоставить по проекту
 
 * Миграции для создания базы данных.
@@ -139,3 +130,11 @@ python manage.py runserver
 ```
 
 Файл requests-examples.http содержит примеры запросов.
+
+Запуск тестов с coverage:
+
+```bash
+pytest --cov=django_diplom_project tests/
+```
+
+![Запуск тестов с coverage](./screenshots/pytests_with_coverage.png?raw=true)
