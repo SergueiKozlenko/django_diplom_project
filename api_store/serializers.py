@@ -111,7 +111,7 @@ class OrderSerializer(serializers.ModelSerializer):
         positions = validated_data.pop('positions')
         validated_data['total_amount'] = 0
         for product in positions:
-            price = Product.objects.get(id=product['product'].id).price
+            price = product['product'].price
             validated_data['total_amount'] += price * product['quantity']
         order = super().create(validated_data)
         if positions:
@@ -134,7 +134,7 @@ class OrderSerializer(serializers.ModelSerializer):
             instance.positions.all().delete()
             total = 0
             for product in positions:
-                price = Product.objects.get(id=product['product'].id).price
+                price = product['product'].price
                 total += price * product['quantity']
             instance.total = total
             if positions:

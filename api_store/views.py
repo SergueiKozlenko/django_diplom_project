@@ -4,16 +4,8 @@ from api_store.filters import ProductFilter, OrderFilter, ProductReviewFilter
 from api_store.models import Product, Order, ProductReview, ProductCollection
 from api_store.serializers import ProductSerializer, OrderSerializer, ProductCollectionSerializer, \
     ProductReviewSerializer
-from rest_framework.permissions import IsAdminUser, IsAuthenticated, BasePermission
-
-
-class IsAdminOrOwner(BasePermission):
-    """
-    Permissions для админов или создателей заказов.
-    """
-
-    def has_object_permission(self, request, view, obj):
-        return obj.user == request.user or request.user.is_staff
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from api_store.permissions import IsAdminOrOwner
 
 
 class ProductsViewSet(ModelViewSet):
